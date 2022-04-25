@@ -49,7 +49,7 @@ class PnsAttendeSheet implements
      */
     public function title(): string
     {
-        return 'PNS';
+        return 'Presensi';
     }
 
     public function styles(Worksheet $sheet)

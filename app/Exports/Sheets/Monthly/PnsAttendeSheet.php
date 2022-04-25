@@ -35,7 +35,7 @@ class PnsAttendeSheet implements
     {
         $this->users = $users;
         $this->date = $date;
-        $this->lastCell = 7 + \count($this->users->first()['presensi']);
+        $this->lastCell = 7 + ($this->users->first() ? count($this->users->first()['presensi']) : 2);
     }
 
     /**
@@ -55,7 +55,7 @@ class PnsAttendeSheet implements
      */
     public function title(): string
     {
-        return 'PNS';
+        return 'Presensi';
     }
 
     public function styles(Worksheet $sheet)
@@ -145,8 +145,10 @@ class PnsAttendeSheet implements
             '',
         ];
 
-        foreach ($this->users->first()['presensi'] as $presence) {
-            array_push($data, Carbon::parse($presence['date'])->format('d'));
+        if ($this->users->first()) {
+            foreach ($this->users->first()['presensi'] as $presence) {
+                array_push($data, Carbon::parse($presence['date'])->format('d'));
+            }
         }
 
         return [

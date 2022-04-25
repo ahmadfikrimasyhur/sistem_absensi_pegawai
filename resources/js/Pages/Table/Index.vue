@@ -26,19 +26,19 @@
     </div>
     <div class="mt-4 mb-2 text-xl font-bold">Unduh Data</div>
     <div
-      class="grid w-full grid-cols-1 gap-6 mb-4 sm:grid-cols-2 lg:grid-cols-4"
+      class="grid w-full grid-cols-1 gap-6 mb-4 sm:grid-cols-2 lg:grid-cols-3"
     >
       <a
         :href="exportData('daily')"
         class="font-bold bg-yellow-200 hover:bg-yellow-300 btn"
       >
-        <p class="text-yellow-800">Harian ({{ date }})</p>
+        <p class="text-yellow-800 text-center">Harian ({{ date }})</p>
       </a>
       <a
         :href="exportData('monthly')"
         class="font-bold bg-indigo-200 btn hover:bg-indigo-300"
       >
-        <p class="text-indigo-800">
+        <p class="text-indigo-800 text-center">
           Bulanan ({{
             Intl.DateTimeFormat("id-ID", { month: "long" }).format(
               placeholderDate
@@ -50,26 +50,26 @@
         :href="exportData('annual')"
         class="font-bold bg-red-200 btn hover:bg-red-300"
       >
-        <p class="text-red-800">
-          Tahunan (PNS/{{
+        <p class="text-red-800 text-center">
+          Tahunan ({{
             Intl.DateTimeFormat("id-ID", { year: "numeric" }).format(
               placeholderDate
             )
           }})
         </p>
       </a>
-      <a
+      <!-- <a
         :href="exportData('annual', 'Honorer')"
         class="font-bold bg-blue-200 btn hover:bg-blue-300"
       >
-        <p class="text-blue-800">
+        <p class="text-blue-800 text-center">
           Tahunan (Honorer/{{
             Intl.DateTimeFormat("id-ID", { year: "numeric" }).format(
               placeholderDate
             )
           }})
         </p>
-      </a>
+      </a> -->
     </div>
     <div class="my-4 text-xl font-bold">Tabel Absensi</div>
     <div class="text-center border-transparent rounded-lg shadow-lg">
@@ -276,7 +276,7 @@
         <p>Tidak ada data Izin, Dinas Luar, & Cuti</p>
       </div>
     </div>
-    <div class="flex flex-col mt-16 text-sm text-center">
+    <!-- <div class="flex flex-col mt-16 text-sm text-center">
       <img
         :src="route('landing') + 'assets/logo.png'"
         style="width: 5%"
@@ -294,7 +294,7 @@
           >Fajrian Aidil Pratama</a
         >
       </p>
-    </div>
+    </div> -->
     <viewer :images="images" @inited="inited" class="viewer" ref="viewer">
       <template slot-scope="scope">
         <img v-for="src in scope.images" :src="src" :key="src" class="hidden" />

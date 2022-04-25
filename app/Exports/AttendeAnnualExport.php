@@ -32,9 +32,7 @@ class AttendeAnnualExport implements FromCollection, WithMultipleSheets
     {
         $sheets = [];
         for ($i = 1; $i <= 12; $i++) {
-            $sheets[] = $this->type === "PNS" ?
-                new PnsAttendeSheet($this->users, $i, $this->date) :
-                new HonorerAttendeSheet($this->users, $i, $this->date);
+            $sheets[] = new PnsAttendeSheet($this->users, $i, $this->date);
         }
         return $sheets;
     }

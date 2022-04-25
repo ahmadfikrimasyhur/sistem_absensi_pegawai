@@ -70,7 +70,7 @@ class PnsAttendeSheet implements
 
     public function styles(Worksheet $sheet)
     {
-        $lastIndex = 7 + count($this->collection()->first()['presensi']);
+        $lastIndex = 7 + ($this->collection()->first() ? count($this->collection()->first()['presensi']) : 2);
         if ($lastIndex == 7) {
             $lastIndex = 25;
         }
@@ -159,8 +159,10 @@ class PnsAttendeSheet implements
             '',
         ];
 
-        foreach ($this->collection()->first()['presensi'] as $presence) {
-            array_push($data, Carbon::parse($presence['date'])->format('d'));
+        if ($this->collection()->first()) {
+            foreach ($this->collection()->first()['presensi'] as $presence) {
+                array_push($data, Carbon::parse($presence['date'])->format('d'));
+            }
         }
 
         return [
@@ -212,7 +214,7 @@ class PnsAttendeSheet implements
 
     public function columnFormats(): array
     {
-        $lastIndex = 7 + count($this->collection()->first()['presensi']);
+        $lastIndex = 7 + ($this->collection()->first() ? count($this->collection()->first()['presensi']) : 2);
         if ($lastIndex == 7) {
             $lastIndex = 25;
         }

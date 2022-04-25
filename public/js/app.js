@@ -68505,7 +68505,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "grid w-full grid-cols-1 gap-6 mb-4 sm:grid-cols-2 lg:grid-cols-4"
+            "grid w-full grid-cols-1 gap-6 mb-4 sm:grid-cols-2 lg:grid-cols-3"
         },
         [
           _c(
@@ -68515,7 +68515,7 @@ var render = function() {
               attrs: { href: _vm.exportData("daily") }
             },
             [
-              _c("p", { staticClass: "text-yellow-800" }, [
+              _c("p", { staticClass: "text-yellow-800 text-center" }, [
                 _vm._v("Harian (" + _vm._s(_vm.date) + ")")
               ])
             ]
@@ -68528,7 +68528,7 @@ var render = function() {
               attrs: { href: _vm.exportData("monthly") }
             },
             [
-              _c("p", { staticClass: "text-indigo-800" }, [
+              _c("p", { staticClass: "text-indigo-800 text-center" }, [
                 _vm._v(
                   "\n        Bulanan (" +
                     _vm._s(
@@ -68549,30 +68549,9 @@ var render = function() {
               attrs: { href: _vm.exportData("annual") }
             },
             [
-              _c("p", { staticClass: "text-red-800" }, [
+              _c("p", { staticClass: "text-red-800 text-center" }, [
                 _vm._v(
-                  "\n        Tahunan (PNS/" +
-                    _vm._s(
-                      Intl.DateTimeFormat("id-ID", { year: "numeric" }).format(
-                        _vm.placeholderDate
-                      )
-                    ) +
-                    ")\n      "
-                )
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "font-bold bg-blue-200 btn hover:bg-blue-300",
-              attrs: { href: _vm.exportData("annual", "Honorer") }
-            },
-            [
-              _c("p", { staticClass: "text-blue-800" }, [
-                _vm._v(
-                  "\n        Tahunan (Honorer/" +
+                  "\n        Tahunan (" +
                     _vm._s(
                       Intl.DateTimeFormat("id-ID", { year: "numeric" }).format(
                         _vm.placeholderDate
@@ -68882,32 +68861,6 @@ var render = function() {
             )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "flex flex-col mt-16 text-sm text-center" }, [
-        _c("img", {
-          staticClass: "ml-auto mr-auto",
-          staticStyle: { width: "5%" },
-          attrs: { src: _vm.route("landing") + "assets/logo.png" }
-        }),
-        _vm._v(" "),
-        _c("p", { staticClass: "text-gray-400" }, [
-          _vm._v(
-            "\n      Copyright © " +
-              _vm._s(new Date().getFullYear()) +
-              " -\n      "
-          ),
-          _vm._m(3),
-          _vm._v("\n      by\n      "),
-          _c(
-            "a",
-            {
-              staticClass: "text-blue-500 hover:underline hover:text-blue-700",
-              attrs: { href: "https://linkedin.com/in/ryanaidilp" }
-            },
-            [_vm._v("Fajrian Aidil Pratama")]
-          )
-        ])
-      ]),
-      _vm._v(" "),
       _c("viewer", {
         ref: "viewer",
         staticClass: "viewer",
@@ -69073,20 +69026,6 @@ var staticRenderFns = [
         )
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "span",
-      { staticClass: "text-blue-500 hover:underline hover:text-blue-700" },
-      [
-        _c("a", { attrs: { href: "https://banuacoders.com" } }, [
-          _vm._v("Banua Coders")
-        ])
-      ]
-    )
   }
 ]
 render._withStripped = true

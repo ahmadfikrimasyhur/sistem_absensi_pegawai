@@ -35,7 +35,7 @@ class HonorerAttendeSheet implements
     {
         $this->users = $users;
         $this->date = $date;
-        $this->lastCell = 4 + \count($this->users->first()['presensi']);
+        $this->lastCell = 4 + ($this->users->first() ? count($this->users->first()['presensi']) : 2);
     }
 
     /**
@@ -68,8 +68,10 @@ class HonorerAttendeSheet implements
             ''
         ];
 
-        foreach ($this->users->first()['presensi'] as $presence) {
-            array_push($data, Carbon::parse($presence['date'])->format('d'));
+        if ($this->users->first()) {
+            foreach ($this->users->first()['presensi'] as $presence) {
+                array_push($data, Carbon::parse($presence['date'])->format('d'));
+            }
         }
 
         return [

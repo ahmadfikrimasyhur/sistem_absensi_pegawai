@@ -31,7 +31,7 @@ class AttendeMonthlyExport implements FromCollection, WithMultipleSheets
     {
         $sheets = [];
         $sheets[] = new PnsAttendeSheet($this->users, $this->date);
-        $sheets[] = new HonorerAttendeSheet($this->users, $this->date);
+        // $sheets[] = new HonorerAttendeSheet($this->users, $this->date);
         return $sheets;
     }
 }
