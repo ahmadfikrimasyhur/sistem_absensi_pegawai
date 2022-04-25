@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col justify-center p-4 px-5">
     <p class="mb-8 text-3xl font-bold text-center">
-      Sistem Absensi Pegawai Online
+      Sistem Presensi Pegawai Online
       <br />
-      Kantor Camat Balaesang
+      Hartaka Siber Teknologi
     </p>
     <hr />
     <div class="flex flex-col items-center justify-between my-4 md:flex-row">
@@ -74,7 +74,14 @@
     <div class="my-4 text-xl font-bold">Tabel Absensi</div>
     <div class="text-center border-transparent rounded-lg shadow-lg">
       <div
-        class="p-4 text-white uppercase bg-gray-500 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg"
+        class="
+          p-4
+          text-white
+          uppercase
+          bg-gray-500
+          border-b-2 border-gray-500
+          rounded-tl-lg rounded-tr-lg
+        "
       >
         <h1 class="text-xl font-bold">Tabel Absensi Pegawai PNS</h1>
         <p>{{ date }}</p>
@@ -82,7 +89,15 @@
       <div class="p-4">
         <div class="overflow-x-auto table-responsive">
           <table
-            class="table text-sm rounded-lg table_pns table-striped display compact table-bordered"
+            class="
+              table
+              text-sm
+              rounded-lg
+              table_pns table-striped
+              display
+              compact
+              table-bordered
+            "
             style="width: 100%"
             cellspacing="0"
           >
@@ -120,7 +135,14 @@
 
     <div class="my-8 text-center border-transparent rounded-lg shadow-lg">
       <div
-        class="p-4 text-white uppercase bg-gray-500 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg"
+        class="
+          p-4
+          text-white
+          uppercase
+          bg-gray-500
+          border-b-2 border-gray-500
+          rounded-tl-lg rounded-tr-lg
+        "
       >
         <h1 class="text-xl font-bold">Tabel Absensi Pegawai Honorer</h1>
         <p>{{ date }}</p>
@@ -128,7 +150,15 @@
       <div class="p-4">
         <div class="overflow-x-auto table-responsive">
           <table
-            class="table text-sm rounded-lg table_honorer table-striped display compact table-bordered"
+            class="
+              table
+              text-sm
+              rounded-lg
+              table_honorer table-striped
+              display
+              compact
+              table-bordered
+            "
             style="width: 100%"
             cellspacing="0"
           >
@@ -172,7 +202,17 @@
         class="grid grid-cols-1 gap-6 mt-6 md:grid-cols-2 xl:grid-cols-3"
       >
         <div
-          class="flex flex-col w-full transition-all duration-150 bg-white rounded-lg shadow-md cursor-pointer hover:shadow-xl"
+          class="
+            flex flex-col
+            w-full
+            transition-all
+            duration-150
+            bg-white
+            rounded-lg
+            shadow-md
+            cursor-pointer
+            hover:shadow-xl
+          "
           v-for="item in leaves"
           :key="item.id"
         >

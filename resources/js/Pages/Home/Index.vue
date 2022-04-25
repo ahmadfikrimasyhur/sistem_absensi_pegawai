@@ -1,11 +1,9 @@
 <template>
-  <div
-    class="flex flex-col justify-center w-full min-h-screen p-4 mx-auto"
-  >
+  <div class="flex flex-col justify-center w-full min-h-screen p-4 mx-auto">
     <p class="mb-4 text-3xl font-bold text-center">
-      Sistem Absensi Pegawai Online
+      Sistem Presensi Pegawai Online
       <br />
-      Kantor Camat Balaesang
+      Hartaka Siber Teknologi
     </p>
     <div class="flex flex-col justify-center mt-4" v-if="holiday.is_holiday">
       <p class="text-center text-muted">Libur Nasional</p>
@@ -54,17 +52,12 @@
         <p class="text-center">Belum bisa melakukan presensi</p>
       </div>
       <div class="justify-center mx-auto mt-4">
-        <inertia-link
-          :href="route('print')"
-          class="btn-primary btn"
+        <inertia-link :href="route('print')" class="btn-primary btn"
           >Unduh Data Presensi</inertia-link
         >
       </div>
     </div>
-    <div
-      class="flex flex-col justify-center w-full mt-4"
-      v-else
-    >
+    <div class="flex flex-col justify-center w-full mt-4" v-else>
       <p class="text-center text-gray-500">Hari kerja selanjutnya</p>
       <flip-countdown
         @timeElapsed="refreshPage()"

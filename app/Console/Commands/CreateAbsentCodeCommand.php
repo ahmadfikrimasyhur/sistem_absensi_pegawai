@@ -46,7 +46,6 @@ class CreateAbsentCodeCommand extends Command
     {
 
         $types = AttendeType::all();
-
         $holiday = $this->holidayRepository->getToday();
         $isWeekend = today()->isWeekend();
 
@@ -79,7 +78,6 @@ class CreateAbsentCodeCommand extends Command
                         'code' => $code,
                         'start_time' => $start_time,
                         'end_time' => $end_time,
-
                     ]
                 );
             }

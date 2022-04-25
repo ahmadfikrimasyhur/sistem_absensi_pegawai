@@ -22,7 +22,6 @@ use App\Repositories\Interfaces\AbsentPermissionRepositoryInterface;
 
 class MainController extends Controller
 {
-
     private $holidayRepository;
     private $attendeRepository;
     private $paidLeaveRepository;
@@ -73,7 +72,6 @@ class MainController extends Controller
         }
 
         foreach ($attendeCode as $code) {
-
             if (
                 Carbon::parse($code->start_time) <= now()
                 &&
@@ -165,7 +163,6 @@ class MainController extends Controller
 
     private function setTimer($days, $attendeCode)
     {
-
         if (now()->hour >= 8 && now()->hour < 12) {
             $deadline = Carbon::parse($attendeCode[1]->start_time);
         } else if (now()->hour >= 12 && now()->hour < 13) {
@@ -177,12 +174,12 @@ class MainController extends Controller
         } else {
             $deadline = Carbon::parse("07:00")->addDays($days);
         }
+
         return $deadline;
     }
 
     private function formatLeave($leaves, $items)
     {
-
         foreach ($items as $item) {
             $type = '';
             switch (class_basename($item)) {
