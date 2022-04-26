@@ -19,7 +19,7 @@ class AllUserTransformers extends TransformerAbstract
      *
      * @var array
      */
-    protected $defaultIncludes = [
+    protected array $defaultIncludes = [
         // 
     ];
 
@@ -28,7 +28,7 @@ class AllUserTransformers extends TransformerAbstract
      *
      * @var array
      */
-    protected $availableIncludes = [
+    protected array $availableIncludes = [
         //
     ];
 
