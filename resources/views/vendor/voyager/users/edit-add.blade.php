@@ -58,7 +58,7 @@
                         $genders = \App\Models\Gender::all();
                         $selected_department = optional($dataTypeContent->departemen)->id;
                         $departments = \App\Models\Department::all();
-                        $status = ['Admin','PNS', 'Honorer'];
+                        $status = ['Admin','Pegawai'];
                         $selected_status = optional($dataTypeContent)->status;
                         $golongan = \App\Models\GovernmentEmployeeGroup::all();
                         $selected_golongan = optional($dataTypeContent)->government_employee_group_id;
