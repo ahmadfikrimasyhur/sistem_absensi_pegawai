@@ -81,7 +81,6 @@ class UserController extends Controller
             return setJson(false, 'Gagal masuk ke aplikasi!', [], 400, $validator->errors()->toArray());
         }
 
-
         $user = $this->userRepository->getByPhone($request->phone);
 
         if (!$user || !Hash::check($request->password, $user->password)) {
