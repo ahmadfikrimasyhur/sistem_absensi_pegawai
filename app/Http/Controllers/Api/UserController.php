@@ -483,9 +483,7 @@ class UserController extends Controller
         $attendeCode = AttendeCode::with(['tipe'])->whereDate('created_at', today())->get();
         $weekend = today()->isWeekend();
         $holiday = $this->holidayRepository->getToday();
-
         $nextPresence = null;
-
         $holiday = (object) [
             'is_holiday' => !is_null($holiday),
             'name' =>  optional($holiday)->name ?? '',
@@ -507,7 +505,6 @@ class UserController extends Controller
         }
 
         foreach ($attendeCode as $code) {
-
             if (
                 Carbon::parse($code->start_time) <= now()
                 &&
@@ -517,8 +514,6 @@ class UserController extends Controller
                 break;
             }
         }
-
-
 
         return $nextPresence;
     }
