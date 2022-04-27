@@ -93,6 +93,7 @@
 import { Inertia } from "@inertiajs/inertia";
 import FlipCountdown from "vue2-flip-countdown";
 import moment from "moment";
+
 export default {
   props: {
     code: {
@@ -138,6 +139,9 @@ export default {
       setInterval(() => {
         this.refreshPage();
       }, 60 * 1000);
+    },
+    logout() {
+      this.$inertia.post(route("logout"));
     },
   },
   mounted() {

@@ -2249,6 +2249,9 @@ __webpack_require__.r(__webpack_exports__);
       setInterval(function () {
         _this.refreshPage();
       }, 60 * 1000);
+    },
+    logout: function logout() {
+      this.$inertia.post(route("logout"));
     }
   },
   mounted: function mounted() {
