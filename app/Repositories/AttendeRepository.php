@@ -48,8 +48,8 @@ class AttendeRepository implements AttendeRepositoryInterface
 
     public function formatUserAttendes($attendes, $forWeb = false, $forExport = false)
     {
-
         $attendes = $attendes->groupBy('user_id');
+
         return $attendes->map(function ($attende) use ($forWeb, $forExport) {
             $user = $attende->first()->pegawai;
             $presenceTransformer = $forWeb ?  new AllAttendeTransformer : new AttendeTransformers;
@@ -64,19 +64,24 @@ class AttendeRepository implements AttendeRepositoryInterface
                     return $item->created_at->format('d-m-Y');
                 })->values();
                 $data = array();
+
                 foreach ($attende as $key => $presence) {
                     $percentage = 0;
                     foreach ($presence as $attende) {
                         $percentage += checkAttendancePercentage($attende->attende_status_id);
                     }
+
                     $data[$key] = [
                         'date' => $attende->created_at->format('Y-m-d'),
                         'percentage' => round($percentage / 4, 2)
                     ];
                 }
+
                 $presence = $data;
             }
+
             $userTransformer = $forWeb ? new AttendeUserTransformer($presence) : new AllUserTransformers($presence);
+
             return fractal()->item($user)
                 ->transformWith($userTransformer)
                 ->serializeWith(new CustomSerializer)->toArray();

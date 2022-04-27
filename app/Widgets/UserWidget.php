@@ -22,7 +22,7 @@ class UserWidget extends BaseDimmer
     public function run()
     {
         $count = User::where(function ($query) {
-            return $query->pns()->orWhere->honorer();
+            return $query->pegawai();
         })->count();
         $string = "Pegawai";
 

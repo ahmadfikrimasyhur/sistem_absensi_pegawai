@@ -45,12 +45,12 @@ class UserController extends Controller
         $this->outstationRepository = $outstationRepository;
         $this->absentPermissionRepository = $absentPermissionRepository;
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index(Request $request)
     {
         $date = today();
@@ -64,7 +64,6 @@ class UserController extends Controller
         }
         return setJson(true, 'Berhasil mengambil seluruh data pegawai!', $users, 200, []);
     }
-
 
     public function login(Request $request)
     {
@@ -120,7 +119,6 @@ class UserController extends Controller
      */
     public function update_password(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'old_pass' => 'required',
             'new_pass' => 'required|different:old_pass',

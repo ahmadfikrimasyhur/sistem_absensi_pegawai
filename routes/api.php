@@ -52,7 +52,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/picture',  [AbsentPermissionController::class, 'updatePicture']);
     });
 
-
     Route::group(['prefix' => 'outstation'], function () {
         Route::post('/', [OutstationController::class, 'store']);
         Route::get('/', [OutstationController::class, 'index']);

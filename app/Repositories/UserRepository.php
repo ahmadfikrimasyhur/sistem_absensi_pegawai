@@ -15,21 +15,21 @@ class UserRepository implements UserRepositoryInterface
     public function all()
     {
         return User::where(function ($query) {
-            return $query->pns()->orWhere->honorer();
+            return $query->pegawai();
         })->where('is_active', 1)->with(['departemen', 'golongan', 'gender'])->get();
     }
 
     public function allExcept($exceptId)
     {
         return User::where(function ($query) {
-            return $query->pns()->orWhere->honorer();
+            return $query->pegawai();
         })->where('is_active', 1)->with(['departemen', 'golongan', 'gender'])->where('id', '!=', $exceptId)->get();
     }
 
     public function allByBirthday($birthday)
     {
         return User::where(function ($query) {
-            return $query->pns()->orWhere->honorer();
+            return $query->pegawai();
         })->where('is_active', 1)
             ->whereMonth('date_of_birth', $birthday->format('m'))
             ->whereDay('date_of_birth', $birthday->format('d'))->get();

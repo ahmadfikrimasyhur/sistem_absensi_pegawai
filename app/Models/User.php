@@ -97,6 +97,11 @@ class User extends \TCG\Voyager\Models\User
         return $query->where('status', 'Honorer');
     }
 
+    public function scopePegawai($query)
+    {
+        return $query->where('status', 'Pegawai');
+    }
+
     public function format($date)
     {
         return [
