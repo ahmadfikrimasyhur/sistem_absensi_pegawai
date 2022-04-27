@@ -19,7 +19,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cetak', [App\Http\Controllers\MainController::class, 'export'])->name('print');
     Route::get('/download', [App\Http\Controllers\MainController::class, 'download'])->name('download');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
 });
 
 Auth::routes();
