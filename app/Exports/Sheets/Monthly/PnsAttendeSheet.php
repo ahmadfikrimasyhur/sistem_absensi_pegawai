@@ -44,7 +44,7 @@ class PnsAttendeSheet implements
     public function collection()
     {
         return $this->users->filter(function ($user) {
-            return $user['status'] === 'PNS';
+            return $user['status'] === 'Pegawai';
         })->sortByDesc(function ($user) {
             return collect($user['presensi'])->average('percentage');
         })->values();

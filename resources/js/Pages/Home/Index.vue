@@ -1,9 +1,26 @@
 <template>
-  <div class="flex flex-col justify-center w-full min-h-screen p-4 mx-auto">
+  <div class="flex flex-col w-full min-h-screen p-4 mx-auto">
+    <div class="flex flex-col items-center justify-between mb-4 md:flex-row">
+      <div>
+        <div class="mb-4 btn btn-primary md:mb-0">
+          <a :href="route('print')"> Laporan </a>
+        </div>
+        <div class="mb-4 btn bg-red-500 md:mb-0">
+          <a :href="route('voyager.dashboard')"> Admin </a>
+        </div>
+      </div>
+      <div class="flex flex-col justify-end">
+        <form @submit.prevent="logout()">
+          <button as="button" type="submit" class="btn bg-gray-500">
+            Logout
+          </button>
+        </form>
+      </div>
+    </div>
     <p class="mb-4 text-3xl font-bold text-center">
-      Sistem Presensi Pegawai Online
+      Sistem Presensi Pegawai
       <br />
-      Hartaka Siber Teknologi
+      PT Hartaka Cyber Tech
     </p>
     <div class="flex flex-col justify-center mt-4" v-if="holiday.is_holiday">
       <p class="text-center text-muted">Libur Nasional</p>
@@ -72,7 +89,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import { Inertia } from "@inertiajs/inertia";
 import FlipCountdown from "vue2-flip-countdown";

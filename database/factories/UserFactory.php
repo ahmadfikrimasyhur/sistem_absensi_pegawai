@@ -29,7 +29,7 @@ class UserFactory extends Factory
             'phone' => $this->faker->unique()->phoneNumber,
             'nip' => $this->faker->unique()->creditCardNumber,
             'position' => $this->faker->jobTitle,
-            'status' => $this->faker->randomElement(array('PNS', 'Honorer')),
+            'status' => $this->faker->randomElement(array('Pegawai', 'Honorer')),
             'email_verified_at' => now(),
             'password' => Hash::make('password'), // password
             'remember_token' => Str::random(10),

@@ -45,7 +45,7 @@ class PaidLeaveController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->user()->status !== 'PNS') {
+        if ($request->user()->status !== 'Pegawai') {
             return setJson(
                 false,
                 'Gagal',

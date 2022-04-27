@@ -44,11 +44,9 @@ class CreateAbsentCodeCommand extends Command
      */
     public function handle()
     {
-
         $types = AttendeType::all();
         $holiday = $this->holidayRepository->getToday();
         $isWeekend = today()->isWeekend();
-
         $attendeCode = AttendeCode::whereDate('created_at', today())->get();
         if ($attendeCode->count() > 0) {
             $this->error('Attende code already generated!');
@@ -61,26 +59,26 @@ class CreateAbsentCodeCommand extends Command
                     $code = Str::random(rand(8, 16));
                     $attendeCode = AttendeCode::where('code', $code)->first();
                 } while (!is_null($attendeCode));
+
                 $start_time = [
-                    'Absen Pagi' => '07:00',
-                    'Absen Istrahat' => now()->isFriday() ? '11:30' : '12:00',
-                    'Absen Siang' => '13:00',
-                    'Absen Pulang' => now()->isFriday() ? '16:30' : '16:00'
+                    'Absen Pagi' => '06:00',
+                    // 'Absen Istrahat' => now()->isFriday() ? '11:30' : '12:00',
+                    // 'Absen Siang' => '13:00',
+                    'Absen Pulang' => '16:00'
                 ][$type->name];
                 $end_time = [
-                    'Absen Pagi' => '08:00',
-                    'Absen Istrahat' => '12:59',
-                    'Absen Siang' => '14:00',
-                    'Absen Pulang' => '18:00'
+                    'Absen Pagi' => '11:59',
+                    // 'Absen Istrahat' => '12:59',
+                    // 'Absen Siang' => '14:00',
+                    'Absen Pulang' => '23:59'
                 ][$type->name];
-                $type->kode_absen()->create(
-                    [
-                        'code' => $code,
-                        'start_time' => $start_time,
-                        'end_time' => $end_time,
-                    ]
-                );
+                $type->kode_absen()->create([
+                    'code' => $code,
+                    'start_time' => $start_time,
+                    'end_time' => $end_time,
+                ]);
             }
+
             $this->info('Succesfully created absent code!');
         } else if ($holiday) {
             $this->info('Today is holiday!');

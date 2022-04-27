@@ -43,7 +43,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->command('view:clear')->dailyAt('00:50');
         $schedule->command('debugbar:clear')->dailyAt('00:50');
-        $schedule->command('birthday:check')->dailyAt('06:00');
+        // $schedule->command('birthday:check')->dailyAt('06:00');
         $schedule->command('permission:check')->dailyAt("01:10");
         $schedule->command('outstation:check')->dailyAt("01:15");
         $schedule->command('paidleave:check')->dailyAt("00:00");
@@ -63,9 +63,9 @@ class Kernel extends ConsoleKernel
             ->onFailure(function () {
                 Log::info('failed_to_generate_attende_list');
             });
-        $schedule->command('holiday:generate', [
-            '--year' => now()->addYear()->year
-        ])->yearlyOn(12, 31, '18:00');
+        // $schedule->command('holiday:generate', [
+        //     '--year' => now()->addYear()->year
+        // ])->yearlyOn(12, 31, '18:00');
     }
 
     /**

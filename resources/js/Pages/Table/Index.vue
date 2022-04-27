@@ -1,28 +1,37 @@
 <template>
   <div class="flex flex-col justify-center p-4 px-5">
+    <div class="flex flex-col items-center justify-between mb-4 md:flex-row">
+      <div>
+        <div class="mb-4 btn btn-primary md:mb-0">
+          <a :href="route('landing')"> Presensi </a>
+        </div>
+        <div class="mb-4 btn bg-red-500 md:mb-0">
+          <a :href="route('voyager.dashboard')"> Admin </a>
+        </div>
+      </div>
+      <div class="flex flex-col justify-end">
+        <form @submit.prevent="logout()">
+          <button as="button" type="submit" class="btn bg-gray-500">
+            Logout
+          </button>
+        </form>
+      </div>
+    </div>
     <p class="mb-8 text-3xl font-bold text-center">
-      Sistem Presensi Pegawai Online
+      Sistem Presensi Pegawai
       <br />
-      Hartaka Siber Teknologi
+      PT Hartaka Cyber Tech
     </p>
     <hr />
-    <div class="flex flex-col items-center justify-between my-4 md:flex-row">
-      <div class="mb-4 btn btn-primary md:mb-0">
-        <inertia-link :href="route('landing')">
-          Kembali ke Halaman Presensi
-        </inertia-link>
-      </div>
-
-      <div class="flex flex-col justify-end text-right">
-        <h5>Pilih Tanggal</h5>
-        <date-picker
-          :editable="false"
-          @clear="reloadData(new Date())"
-          @change="reloadData"
-          v-model="placeholderDate"
-          :placeholder="'Pilih Tanggal'"
-        />
-      </div>
+    <div class="flex flex-col items-center justify-center mt-4 md:flex-row">
+      <h5>Pilih Tanggal</h5>
+      <date-picker
+        :editable="false"
+        @clear="reloadData(new Date())"
+        @change="reloadData"
+        v-model="placeholderDate"
+        :placeholder="'Pilih Tanggal'"
+      />
     </div>
     <div class="mt-4 mb-2 text-xl font-bold">Unduh Data</div>
     <div
@@ -83,7 +92,7 @@
           rounded-tl-lg rounded-tr-lg
         "
       >
-        <h1 class="text-xl font-bold">Tabel Absensi Pegawai PNS</h1>
+        <h1 class="text-xl font-bold">Tabel Absensi Pegawai</h1>
         <p>{{ date }}</p>
       </div>
       <div class="p-4">
@@ -132,8 +141,7 @@
         </div>
       </div>
     </div>
-
-    <div class="my-8 text-center border-transparent rounded-lg shadow-lg">
+    <!-- <div class="my-8 text-center border-transparent rounded-lg shadow-lg">
       <div
         class="
           p-4
@@ -191,7 +199,7 @@
           </table>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="flex flex-col my-8 text-gray-800">
       <div>
         <span class="text-xl font-bold">Daftar Izin, Dinas Luar, dan Cuti</span>
@@ -335,9 +343,8 @@ export default {
       default: () => [],
     },
   },
-
   components: {
-    Viewer,
+    // Viewer,
     DatePicker,
   },
   computed: {
@@ -369,31 +376,31 @@ export default {
           return; // a number
         },
       },
-      viewerOptions: {
-        inline: false,
-        button: true,
-        navbar: true,
-        title: true,
-        toolbar: true,
-        tooltip: true,
-        movable: true,
-        zoomable: true,
-        rotatable: true,
-        scalable: true,
-        transition: true,
-        fullscreen: true,
-        keyboard: true,
-        url: "data-source",
-      },
+      // viewerOptions: {
+      //   inline: false,
+      //   button: true,
+      //   navbar: true,
+      //   title: true,
+      //   toolbar: true,
+      //   tooltip: true,
+      //   movable: true,
+      //   zoomable: true,
+      //   rotatable: true,
+      //   scalable: true,
+      //   transition: true,
+      //   fullscreen: true,
+      //   keyboard: true,
+      //   url: "data-source",
+      // },
     };
   },
   methods: {
-    inited(viewer) {
-      this.$viewer = viewer;
-    },
-    show() {
-      this.$viewer.show();
-    },
+    // inited(viewer) {
+    //   this.$viewer = viewer;
+    // },
+    // show() {
+    //   this.$viewer.show();
+    // },
     reloadData(date) {
       this.placeholderDate = date;
       Inertia.visit(route("print"), {
@@ -463,15 +470,18 @@ export default {
         columns: columns,
       });
     },
+    logout() {
+      this.$inertia.post(route("logout"));
+    },
   },
   mounted() {
     this.createTable(".table_pns", this.pns, "PNS");
     this.selectedDate = this.date;
-    this.createTable(".table_honorer", this.honorer, "Honorer");
+    // this.createTable(".table_honorer", this.honorer, "Honorer");
   },
   beforeDestroy() {
     $(".table_pns").DataTable().destroy();
-    $(".table_honorer").DataTable().destroy();
+    // $(".table_honorer").DataTable().destroy();
   },
 };
 </script>

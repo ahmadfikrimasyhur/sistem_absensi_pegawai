@@ -98,31 +98,28 @@ class MainController extends Controller
         $date = $request->has('date') ? Carbon::parse($request->date) : today();
         $attendes = $this->attendeRepository->getByDate($date);
         $attendes = $this->attendeRepository->formatUserAttendes($attendes, true);
-
         $pns = $attendes->filter(function ($user) {
-            return $user['status'] === 'PNS';
+            return $user['status'] === 'Pegawai';
         });
-        $honorer = $attendes->filter(function ($user) {
-            return $user['status'] === 'Honorer';
-        });
-
+        // $honorer = $attendes->filter(function ($user) {
+        //     return $user['status'] === 'Honorer';
+        // });
         $izin = $this->absentPermissionRepository->getBetweenDate($date);
         $cuti = $this->paidLeaveRepository->getBetweenDate($date);
         $dinas = $this->outstationRepository->getBetweenDate($date);
-
         $leaves = array();
-
         $leaves = $this->formatLeave($leaves, $izin);
         $leaves = $this->formatLeave($leaves, $cuti);
         $leaves = $this->formatLeave($leaves, $dinas);
-
+        $logoutRoute = route('voyager.logout');
 
         return Inertia::render('Table/Index', [
-            'pns' => $pns->values(),
-            'honorer' => $honorer->values(),
+            'Pegawai' => $pns->values(),
+            // 'honorer' => $honorer->values(),
             'leaves' => $leaves,
             'date' => $date->translatedFormat("l, d F Y"),
-            'str_date' => $date->format('Y-m-d')
+            'str_date' => $date->format('Y-m-d'),
+            'logoutRoute' => $logoutRoute
         ]);
     }
 

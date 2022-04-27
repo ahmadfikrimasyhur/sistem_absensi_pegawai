@@ -89,7 +89,7 @@ class User extends \TCG\Voyager\Models\User
 
     public function scopePns($query)
     {
-        return $query->where('status', 'PNS');
+        return $query->where('status', 'Pegawai');
     }
 
     public function scopeHonorer($query)

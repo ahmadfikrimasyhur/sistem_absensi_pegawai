@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -33,5 +34,14 @@ class Handler extends ExceptionHandler
     public function register()
     {
         //
+    }
+
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->inertia()) {
+            return response('', 409)->header('X-Inertia-Location', $exception->redirectTo() ?? route('voyager.login'));
+        }
+
+        return parent::unauthenticated($request, $exception);
     }
 }

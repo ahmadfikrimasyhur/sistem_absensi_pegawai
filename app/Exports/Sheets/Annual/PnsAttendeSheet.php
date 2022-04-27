@@ -44,7 +44,7 @@ class PnsAttendeSheet implements
     public function collection()
     {
         $users = $this->users->filter(function ($user) {
-            return $user['status'] === 'PNS';
+            return $user['status'] === 'Pegawai';
         })->values();
 
         $users = $users->map(function ($user) {
