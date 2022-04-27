@@ -16,7 +16,6 @@ use App\Repositories\Interfaces\HolidayRepositoryInterface;
 
 class AttendeController extends Controller
 {
-
     private $attendeRepository;
     private $holidayRepository;
     private $attendeCodeRepository;
@@ -33,7 +32,6 @@ class AttendeController extends Controller
 
     public function presence(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'code' => 'required',
             'photo' => 'required',
@@ -62,7 +60,6 @@ class AttendeController extends Controller
         }
 
         $code = $this->attendeCodeRepository->getByCode($request->code);
-
         if (!$code) {
             return setJson(false, 'Gagal!', [], 404, ['message' => ['Kode absen tidak valid!']]);
         }
@@ -80,7 +77,6 @@ class AttendeController extends Controller
         }
 
         $attende = $this->attendeRepository->getByUserAndCode($request->user()->id, $code->id);
-
         if (!$attende) {
             return setJson(false, 'Data presensi tidak ditemukan!', [], 404, ['message' => ['Data presensi tidak ditemukan!']]);
         }
@@ -90,7 +86,6 @@ class AttendeController extends Controller
         }
 
         $update = $this->attendeRepository->presence($request, $code, $attende);
-
         if ($update) {
             $request->user()->notify(new AttendeStatusUpdatedNotification($attende));
             return setJson(
@@ -110,7 +105,6 @@ class AttendeController extends Controller
         $date = $request->has('date') ? Carbon::parse($request->date) : today();
         $attendes = $this->attendeRepository->getByDate($date);
         $users = $this->attendeRepository->formatUserAttendes($attendes);
-
         $holidays = $this->holidayRepository->getByYear($date);
 
         return setJson(true, 'Berhasil mengambil seluruh data pegawai!', [
@@ -141,7 +135,6 @@ class AttendeController extends Controller
         }
 
         $update = $this->attendeRepository->cancel($request->presence_id, $request->reason);
-
         if ($update) {
             return setJson(
                 true,

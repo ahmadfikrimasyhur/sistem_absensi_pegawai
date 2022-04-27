@@ -96,7 +96,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="government_employee_group_id">Golongan</label>
                             <select class="form-control select2" id="government_employee_group_id" name="government_employee_group_id">
                                 <option value="">Nothing</option>
@@ -104,7 +104,7 @@
                                 <option value="{{ $gol->id }}" {{ ($gol->id == $selected_golongan ? 'selected' : '') }}>{{ $gol->rank }} - {{ $gol->group }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <label for="email">{{ __('voyager::generic.email') }}</label>
@@ -125,20 +125,19 @@
                             <label for="default_role">{{ __('voyager::profile.role_default') }}</label>
                             @php
                             $dataTypeRows = $dataType->{(isset($dataTypeContent->id) ? 'editRows' : 'addRows' )};
-
                             $row = $dataTypeRows->where('field', 'user_belongsto_role_relationship')->first();
                             $options = $row->details;
                             @endphp
                             @include('voyager::formfields.relationship')
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="additional_roles">{{ __('voyager::profile.roles_additional') }}</label>
                             @php
                             $row = $dataTypeRows->where('field', 'user_belongstomany_role_relationship')->first();
                             $options = $row->details;
                             @endphp
                             @include('voyager::formfields.relationship')
-                        </div>
+                        </div> --}}
                         @endcan
                         @php
                         if (isset($dataTypeContent->locale)) {
