@@ -491,13 +491,13 @@ class UserController extends Controller
         if ($holiday->is_holiday) {
             $nextPresence = null;
         } else if (!$weekend && $attendeCode->count() > 0) {
-            if (now()->hour >= 8 && now()->hour < 12) {
+            if (now()->hour >= 6 && now()->hour < 12) {
                 $nextPresence = $this->attendeRepository->getByUserAndCode($userId, $attendeCode[1]->id);
-            } else if (now()->hour >= 12 && now()->hour < 13) {
-                $nextPresence = $this->attendeRepository->getByUserAndCode($userId, $attendeCode[2]->id);
-            } else if (now()->hour >= 13 && now()->hour < 18) {
-                $nextPresence = $this->attendeRepository->getByUserAndCode($userId, $attendeCode[3]->id);
-            } else if (now()->hour >= 0 && now()->hour < 8) {
+            } else if (now()->hour >= 12 && now()->hour < 16) {
+                $nextPresence = $this->attendeRepository->getByUserAndCode($userId, $attendeCode[1]->id);
+            } else if (now()->hour >= 16 && now()->hour < 24) {
+                $nextPresence = $this->attendeRepository->getByUserAndCode($userId, $attendeCode[0]->id);
+            } else if (now()->hour >= 0 && now()->hour < 6) {
                 $nextPresence = $this->attendeRepository->getByUserAndCode($userId, $attendeCode[0]->id);
             }
         }
