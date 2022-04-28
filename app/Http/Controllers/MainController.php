@@ -160,16 +160,16 @@ class MainController extends Controller
 
     private function setTimer($days, $attendeCode)
     {
-        if (now()->hour >= 8 && now()->hour < 12) {
+        if (now()->hour >= 6 && now()->hour < 12) {
+            $deadline = Carbon::parse($attendeCode[0]->end_time);
+        } else if (now()->hour >= 12 && now()->hour < 16) {
             $deadline = Carbon::parse($attendeCode[1]->start_time);
-        } else if (now()->hour >= 12 && now()->hour < 13) {
-            $deadline = Carbon::parse($attendeCode[2]->start_time);
-        } else if (now()->hour >= 13 && now()->hour < 18) {
-            $deadline = Carbon::parse($attendeCode[3]->start_time);
-        } else if (now()->hour >= 0 && now()->hour < 8) {
-            $deadline = Carbon::parse("07:00");
+        } else if (now()->hour >= 16 && now()->hour < 24) {
+            $deadline = Carbon::parse($attendeCode[1]->start_time);
+        } else if (now()->hour >= 0 && now()->hour < 6) {
+            $deadline = Carbon::parse("06:00");
         } else {
-            $deadline = Carbon::parse("07:00")->addDays($days);
+            $deadline = Carbon::parse("06:00")->addDays($days);
         }
 
         return $deadline;
