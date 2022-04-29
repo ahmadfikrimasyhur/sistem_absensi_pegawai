@@ -18,8 +18,6 @@ class AttendeTypeSeeder extends Seeder
     {
         $data = [
             'Absen Pagi',
-            'Absen Istrahat',
-            'Absen Siang',
             'Absen Pulang'
         ];
 

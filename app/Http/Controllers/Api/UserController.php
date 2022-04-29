@@ -353,19 +353,10 @@ class UserController extends Controller
                         $yearly_not_morning_parade++;
                     }
                 }
+
                 if ($attende['absent_type'] === 'Absen Pulang') {
                     if ($attende['attend_status'] == 'Tidak Hadir') {
                         $yearly_leave_early++;
-                    }
-                }
-                if ($attende['absent_type'] === 'Absen Istrahat') {
-                    if ($attende['attend_status'] == 'Tidak Hadir') {
-                        $yearly_early_lunch_break++;
-                    }
-                }
-                if ($attende['absent_type'] === 'Absen Siang') {
-                    if ($attende['attend_status'] == 'Tidak Hadir') {
-                        $yearly_not_come_after_lunch_break++;
                     }
                 }
             }
@@ -393,19 +384,10 @@ class UserController extends Controller
                         $monthly_not_morning_parade++;
                     }
                 }
+
                 if ($attende['absent_type'] === 'Absen Pulang') {
                     if ($attende['attend_status'] == 'Tidak Hadir') {
                         $monthly_leave_early++;
-                    }
-                }
-                if ($attende['absent_type'] === 'Absen Istrahat') {
-                    if ($attende['attend_status'] == 'Tidak Hadir') {
-                        $monthly_early_lunch_break++;
-                    }
-                }
-                if ($attende['absent_type'] === 'Absen Siang') {
-                    if ($attende['attend_status'] == 'Tidak Hadir') {
-                        $monthly_not_come_after_lunch_break++;
                     }
                 }
             }
@@ -491,13 +473,9 @@ class UserController extends Controller
         if ($holiday->is_holiday) {
             $nextPresence = null;
         } else if (!$weekend && $attendeCode->count() > 0) {
-            if (now()->hour >= 6 && now()->hour < 12) {
+            if (now()->hour >= 0 && now()->hour < 13) {
                 $nextPresence = $this->attendeRepository->getByUserAndCode($userId, $attendeCode[1]->id);
-            } else if (now()->hour >= 12 && now()->hour < 16) {
-                $nextPresence = $this->attendeRepository->getByUserAndCode($userId, $attendeCode[1]->id);
-            } else if (now()->hour >= 16 && now()->hour < 24) {
-                $nextPresence = $this->attendeRepository->getByUserAndCode($userId, $attendeCode[0]->id);
-            } else if (now()->hour >= 0 && now()->hour < 6) {
+            } else if (now()->hour >= 13 && now()->hour < 24) {
                 $nextPresence = $this->attendeRepository->getByUserAndCode($userId, $attendeCode[0]->id);
             }
         }

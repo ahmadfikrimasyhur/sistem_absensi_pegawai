@@ -2183,6 +2183,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -68093,9 +68096,16 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "flex flex-col items-center justify-end mb-4 md:flex-row"
+          staticClass:
+            "flex flex-col items-center justify-between mb-4 md:flex-row"
         },
         [
+          _c("div", { staticClass: "mb-4 btn btn-primary md:mb-0" }, [
+            _c("a", { attrs: { href: _vm.route("print") } }, [
+              _vm._v(" Laporan ")
+            ])
+          ]),
+          _vm._v(" "),
           _c(
             "form",
             {

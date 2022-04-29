@@ -61,15 +61,11 @@ class CreateAbsentCodeCommand extends Command
                 } while (!is_null($attendeCode));
 
                 $start_time = [
-                    'Absen Pagi' => '06:00',
-                    // 'Absen Istrahat' => now()->isFriday() ? '11:30' : '12:00',
-                    // 'Absen Siang' => '13:00',
-                    'Absen Pulang' => '16:00'
+                    'Absen Pagi' => '00:00',
+                    'Absen Pulang' => '13:00'
                 ][$type->name];
                 $end_time = [
-                    'Absen Pagi' => '11:59',
-                    // 'Absen Istrahat' => '12:59',
-                    // 'Absen Siang' => '14:00',
+                    'Absen Pagi' => '12:59',
                     'Absen Pulang' => '23:59'
                 ][$type->name];
                 $type->kode_absen()->create([

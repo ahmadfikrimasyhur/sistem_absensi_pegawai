@@ -1,6 +1,9 @@
 <template>
   <div class="flex flex-col w-full min-h-screen p-4 mx-auto">
-    <div class="flex flex-col items-center justify-end mb-4 md:flex-row">
+    <div class="flex flex-col items-center justify-between mb-4 md:flex-row">
+      <div class="mb-4 btn btn-primary md:mb-0">
+        <a :href="route('print')"> Laporan </a>
+      </div>
       <form @submit.prevent="logout()">
         <button as="button" type="submit" class="btn bg-gray-500">
           Logout
@@ -139,6 +142,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>
