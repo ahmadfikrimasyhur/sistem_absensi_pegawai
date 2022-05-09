@@ -51,7 +51,7 @@ class AttendeController extends Controller
             return setJson(false, 'Terjadi kesalahan!', [], 400, $validator->errors());
         }
 
-        $distance = getDistance($request->latitude, $request->longitude);
+        return $distance = getDistance($request->latitude, $request->longitude);
         if ($distance > 0.6) {
             Log::notice("user: {$request->user()->name}\njarak: $distance\nlokasi:{$request->address}");
             $distance = number_format($distance, 2, ',', '.');
