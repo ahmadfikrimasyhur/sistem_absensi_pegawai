@@ -227,7 +227,7 @@ class UserController extends Controller
             return setJson(false, 'Terjadi kesalahan!', [], 400, $validator->errors());
         }
 
-        sendNotification($request->content, $request->title);
+        // sendNotification($request->content, $request->title);
 
         return setJson(true, 'Berhasil', 'Sukses mengirimkan pengumumam!', 200, []);
     }

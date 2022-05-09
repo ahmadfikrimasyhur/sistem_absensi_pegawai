@@ -55,7 +55,7 @@ class AbsentPermissionCreatedNotification extends Notification
         $due_date = Carbon::parse($izin->due_date)->translatedFormat('l, d F Y');
         $headings = "Izin diajukan!";
         $body = "Izin baru diajukan:\nJudul : $izin->title\nMulai : $start_date\nSampai : $due_date\nStatus :\nIzin diterima dan menunggu persetujuan";
-        sendNotification("Izin baru diajukan oleh  {$notifiable->name} :\nJudul : $izin->title\nMulai : $start_date\nSampai : $due_date", 'Pengajuan izin!', 2);
+        // sendNotification("Izin baru diajukan oleh  {$notifiable->name} :\nJudul : $izin->title\nMulai : $start_date\nSampai : $due_date", 'Pengajuan izin!', 2);
 
         return [
             'heading' => $headings,

@@ -55,7 +55,7 @@ class AttendeController extends Controller
         if ($distance > 0.6) {
             Log::notice("user: {$request->user()->name}\njarak: $distance\nlokasi:{$request->address}");
             $distance = number_format($distance, 2, ',', '.');
-            sendNotification("Percobaan absen diluar kantor:\nPegawai : {$request->user()->name}\nJarak : $distance km\nLokasi :\n{$request->address}", 'Pelanggaran terdeteksi!', 2);
+            // sendNotification("Percobaan absen diluar kantor:\nPegawai : {$request->user()->name}\nJarak : $distance km\nLokasi :\n{$request->address}", 'Pelanggaran terdeteksi!', 2);
             return setJson(false, "Lokasi tidak sesuai", [], 400, ['message' => ["Sistem mendeteksi anda berada $distance km dari kantor!"]]);
         }
 
@@ -66,13 +66,13 @@ class AttendeController extends Controller
 
         if (Carbon::parse($code->end_time) <= now()) {
             Log::notice("user: {$request->user()->name}\nPaksa masuk absen yang sudah selesai");
-            sendNotification("Percobaan absen yang sudah selesai:\nPegawai : {$request->user()->name}\nAbsen : {$code->tipe->name}", 'Pelanggaran terdeteksi!', 2);
+            // sendNotification("Percobaan absen yang sudah selesai:\nPegawai : {$request->user()->name}\nAbsen : {$code->tipe->name}", 'Pelanggaran terdeteksi!', 2);
             return setJson(false, 'Gagal!', [], 400, ['message' => ['Kode absen sudah tidak dapat digunakan!']]);
         }
 
         if (Carbon::parse($code->start_time) >= now()) {
             Log::notice("user: {$request->user()->name}\nAbsen diluar waktu");
-            sendNotification("Percobaan absen yang belum mulai:\nPegawai : {$request->user()->name}\nAbsen : {$code->tipe->name}", 'Pelanggaran terdeteksi!', 2);
+            // sendNotification("Percobaan absen yang belum mulai:\nPegawai : {$request->user()->name}\nAbsen : {$code->tipe->name}", 'Pelanggaran terdeteksi!', 2);
             return setJson(false, 'Pelanggaran!', [], 400, ['message' => ['Tidak boleh melakukan presensi diluar jadwal!']]);
         }
 
