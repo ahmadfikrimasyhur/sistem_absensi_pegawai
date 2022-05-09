@@ -469,7 +469,6 @@ class UserController extends Controller
             'name' =>  optional($holiday)->name ?? '',
             'date' => optional($holiday)->date ?? ''
         ];
-
         if ($holiday->is_holiday) {
             $nextPresence = null;
         } else if (!$weekend && $attendeCode->count() > 0) {

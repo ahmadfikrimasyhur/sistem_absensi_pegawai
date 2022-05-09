@@ -19,11 +19,9 @@ function sendNotification($body, $heading, $userId = null)
     $headings = [
         'en' => $heading,
     ];
-
     $content = [
         'en' => $body,
     ];
-
 
     if (!is_null($userId)) {
         $fields = [
@@ -41,7 +39,6 @@ function sendNotification($body, $heading, $userId = null)
             'included_segments' => ['All']
         ];
     }
-
 
     Http::withHeaders([
         'Content-Type' => 'application/json',
@@ -105,11 +102,8 @@ function calculateLateTime($start_time, $attend_time, $date)
     return " $duration menit";
 }
 
-
 function updateStatus($from, $to, $data)
 {
-
-
     if (Carbon::parse($data->due_date)->isBefore(today()) || Carbon::parse($data->start_date)->isBefore(today())) {
         $presences = $data->user->presensi()
             ->whereDate('created_at', '>=', Carbon::parse($data->start_date))

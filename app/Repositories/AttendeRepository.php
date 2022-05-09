@@ -52,7 +52,7 @@ class AttendeRepository implements AttendeRepositoryInterface
 
         return $attendes->map(function ($attende) use ($forWeb, $forExport) {
             $user = $attende->first()->pegawai;
-            $presenceTransformer = $forWeb ?  new AllAttendeTransformer : new AttendeTransformers;
+            $presenceTransformer = $forWeb ? new AllAttendeTransformer : new AttendeTransformers;
             if (!$forExport) {
                 $presence = $attende->map(function ($data) use ($presenceTransformer) {
                     return fractal()->item($data)
