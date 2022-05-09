@@ -55,7 +55,7 @@ function getDistance($latitude1, $longitude1, $latitude2 = null, $longitude2 = n
     if (is_null($longitude2)) {
         $longitude2 = env('LONGITUDE_OFFSET');
     }
-    return setJson(false, 'Gagal!', [], 404, ['message' => [$latitude1 . ', ' . $longitude1 . ', ' . $latitude2 . ', ' . $longitude2]]);
+    // return setJson(false, 'Gagal!', [], 404, ['message' => [$latitude1 . ', ' . $longitude1 . ', ' . $latitude2 . ', ' . $longitude2]]);
     $degrees = rad2deg(acos((sin(deg2rad($latitude1)) * sin(deg2rad($latitude2))) + (cos(deg2rad($latitude1)) * cos(deg2rad($latitude2)) * cos(deg2rad($longitude1 - $longitude2)))));
 
     $distance = $degrees * 111.13384;
