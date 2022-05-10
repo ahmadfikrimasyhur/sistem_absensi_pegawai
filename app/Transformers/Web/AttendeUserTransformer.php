@@ -41,9 +41,9 @@ class AttendeUserTransformer extends TransformerAbstract
     {
         return [
             'name' => $user->name,
-            'department' => $user->departemen->name,
+            'department' => optional($user->departemen)->name,
             'position' => $user->position,
-            'gender' => $user->gender->name,
+            'gender' => optional($user->gender)->name,
             'status' => $user->status,
             'nip' => optional($user)->nip ?? '',
             'group' => optional($user->golongan)->group ?? '',
